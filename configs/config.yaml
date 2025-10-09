@@ -1,0 +1,49 @@
+# Search Engine Configuration
+
+# Database
+database:
+  uri: ${MONGO_URI}
+  name: vnexpress_db
+  collections:
+    raw: vnexpress_bongda
+    processed: preprocessed_documents
+    index: inverted_index
+
+# Paths
+paths:
+  data_dir: ./data
+  output_dir: ./outputs
+  vocab_file: ./data/vocab/vocab.txt
+  stopwords_file: ./data/vocab/stopwords.txt
+
+# Preprocessing
+preprocessing:
+  max_tokens: 1000
+  min_token_length: 2
+  normalize_numbers: true
+  normalize_dates: true
+  spell_check: false
+  pos_tagging: true
+
+# Indexing
+indexing:
+  store_positions: true
+  batch_size: 1000
+  save_format: pickle  # json, pickle, mongodb
+
+# Ranking
+ranking:
+  default_method: bm25
+  bm25:
+    k1: 1.5
+    b: 0.75
+  top_k: 10
+  query_expansion: false
+  prf_docs: 5
+  prf_terms: 3
+
+# Logging
+logging:
+  level: INFO
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  file: ./outputs/logs/search_engine.log

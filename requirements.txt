@@ -1,0 +1,42 @@
+# Search Engine Project - Python Dependencies
+
+# Core
+python>=3.8
+
+# MongoDB
+pymongo>=4.0.0
+certifi>=2021.5.30
+
+# Vietnamese NLP
+pyvi>=0.1.1
+underthesea>=1.3.0
+
+# Text Processing
+regex>=2021.8.3
+
+# Data Processing
+pandas>=1.3.0
+numpy>=1.21.0
+
+# Progress Bar
+tqdm>=4.62.0
+
+# Environment
+python-dotenv>=0.19.0
+
+# Jupyter
+jupyter>=1.0.0
+ipykernel>=6.0.0
+notebook>=6.4.0
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=3.0.0
+
+# Web Scraping (optional)
+requests>=2.26.0
+beautifulsoup4>=4.10.0
+selenium>=4.0.0
+
+# Machine Learning (optional, for advanced features)
+scikit-learn>=1.0.0
