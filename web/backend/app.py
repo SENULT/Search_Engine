@@ -253,8 +253,7 @@ class SearchEngine:
             
         if method in ["deepct", "all"]:
             results.extend(self._search_deepct(query_tokens, top_k))
-        
-        # Remove duplicates and sort by score
+          # Remove duplicates and sort by score
         seen = set()
         unique_results = []
         for r in results:
@@ -272,17 +271,16 @@ class SearchEngine:
         results = []
         for idx in top_indices:
             if scores[idx] > 0:
-                article = self.articles[idx]
+                article = self.articles[int(idx)]
                 results.append({
-                    'doc_id': idx,
+                    'doc_id': int(idx),
                     'score': float(scores[idx]),
                     'method': 'BM25',
                     'title': article.get('title', ''),
                     'content': article.get('content', '')[:200] + '...',
                     'summary': article.get('summary', ''),
                     'url': article.get('url', ''),
-                    'date': article.get('date', '')
-                })
+                    'date': article.get('date', '')                })
         
         return results
     
@@ -314,9 +312,9 @@ class SearchEngine:
         results = []
         for doc_id, score in scores[:top_k]:
             if score > 0.01:
-                article = self.articles[doc_id]
+                article = self.articles[int(doc_id)]
                 results.append({
-                    'doc_id': doc_id,
+                    'doc_id': int(doc_id),
                     'score': float(score),
                     'method': 'Conv-KNRM',
                     'title': article.get('title', ''),
@@ -346,8 +344,7 @@ class SearchEngine:
                 
                 try:
                     score = self.deepct(query_tensor, doc_tensor).item()
-                    
-                    # Relevance boost
+                      # Relevance boost
                     query_set = set(query_indices[:10])
                     doc_set = set(doc_indices[:50])
                     overlap = len(query_set.intersection(doc_set))
@@ -363,9 +360,9 @@ class SearchEngine:
         results = []
         for doc_id, score in scores[:top_k]:
             if score > 0.01:
-                article = self.articles[doc_id]
+                article = self.articles[int(doc_id)]
                 results.append({
-                    'doc_id': doc_id,
+                    'doc_id': int(doc_id),
                     'score': float(score),
                     'method': 'DeepCT',
                     'title': article.get('title', ''),
@@ -376,7 +373,6 @@ class SearchEngine:
                 })
         
         return results
-
 # ============================
 # Initialize Search Engine
 # ============================
@@ -387,22 +383,13 @@ async def startup_event():
     """Load data on startup"""
     print("🚀 Starting Vietnamese Football Search API...")
     
-    # Load data - paths relative to backend folder or absolute
-    import os
-    backend_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(os.path.dirname(backend_dir))
-    
+    # Load data
     data_paths = [
-        os.path.join(project_root, "vnexpress_bongda_part1.json"),
-        os.path.join(project_root, "vnexpress_bongda_part2.json"),
-        os.path.join(project_root, "vnexpress_bongda_part3.json"),
-        os.path.join(project_root, "vnexpress_bongda_part4.json")
+        "../../vnexpress_bongda_part1.json",
+        "../../vnexpress_bongda_part2.json",
+        "../../vnexpress_bongda_part3.json",
+        "../../vnexpress_bongda_part4.json"
     ]
-    
-    # Check if files exist
-    for path in data_paths:
-        if not os.path.exists(path):
-            print(f"⚠️ Warning: {path} not found")
     
     search_engine.load_data(data_paths)
     search_engine.build_vocab()
