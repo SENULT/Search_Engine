@@ -1,0 +1,89 @@
+.logo {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.logo-large {
+  margin-bottom: 30px;
+}
+
+.logo-small {
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.logo-text {
+  font-size: 80px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  margin: 0;
+  transition: font-size 0.3s ease;
+}
+
+.logo-small .logo-text {
+  font-size: 32px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.logo-char {
+  display: inline-block;
+  animation: bounceIn 0.6s ease;
+}
+
+/* Google-style colors */
+.logo-v { color: #4285f4; animation-delay: 0.1s; }
+.logo-n { color: #ea4335; animation-delay: 0.15s; }
+.logo-f { color: #fbbc05; animation-delay: 0.2s; }
+.logo-o { color: #4285f4; animation-delay: 0.25s; }
+.logo-o2 { color: #34a853; animation-delay: 0.3s; }
+.logo-t { color: #ea4335; animation-delay: 0.35s; }
+.logo-b { color: #4285f4; animation-delay: 0.4s; }
+.logo-a { color: #fbbc05; animation-delay: 0.45s; }
+.logo-l { color: #34a853; animation-delay: 0.5s; }
+.logo-l2 { color: #ea4335; animation-delay: 0.55s; }
+
+.logo-subtitle {
+  font-size: 18px;
+  color: #5f6368;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-50px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo-text {
+    font-size: 48px;
+  }
+
+  .logo-small .logo-text {
+    font-size: 24px;
+  }
+
+  .logo-subtitle {
+    font-size: 14px;
+  }
+}

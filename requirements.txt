@@ -1,0 +1,43 @@
+# Core Dependencies
+torch>=1.9.0
+torchvision>=0.10.0
+
+# Vietnamese NLP
+pyvi>=0.1
+underthesea>=1.3.0
+
+# Data Processing
+pandas>=1.3.0
+numpy>=1.21.0
+
+# Text Processing & Indexing
+gensim>=4.0.0
+nltk>=3.6
+
+# Progress Bars
+tqdm>=4.62.0
+
+# Database
+pymongo>=3.12.0
+
+# Web Framework (Backend)
+fastapi>=0.68.0
+uvicorn[standard]>=0.15.0
+python-multipart>=0.0.5
+
+# Web Scraping
+selenium>=4.0.0
+beautifulsoup4>=4.10.0
+requests>=2.26.0
+
+# Jupyter
+jupyter>=1.0.0
+ipykernel>=6.4.0
+nbconvert>=6.2.0
+
+# Utilities
+python-dotenv>=0.19.0
+pyyaml>=5.4.0
+
+# Testing
+pytest>=6.2.5
