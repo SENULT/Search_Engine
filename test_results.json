@@ -1,0 +1,255 @@
+{
+  "timestamp": "2025-11-08T11:28:54.633928",
+  "tests": [
+    {
+      "name": "Crawling module",
+      "status": "PASS",
+      "message": "Folder: 01_crawling"
+    },
+    {
+      "name": "01_crawling README",
+      "status": "PASS",
+      "message": "Documentation exists"
+    },
+    {
+      "name": "Preprocessing module",
+      "status": "PASS",
+      "message": "Folder: 02_preprocessing"
+    },
+    {
+      "name": "02_preprocessing README",
+      "status": "PASS",
+      "message": "Documentation exists"
+    },
+    {
+      "name": "Indexing module",
+      "status": "PASS",
+      "message": "Folder: 03_indexing"
+    },
+    {
+      "name": "03_indexing README",
+      "status": "PASS",
+      "message": "Documentation exists"
+    },
+    {
+      "name": "Ranking module",
+      "status": "PASS",
+      "message": "Folder: 04_ranking"
+    },
+    {
+      "name": "04_ranking README",
+      "status": "PASS",
+      "message": "Documentation exists"
+    },
+    {
+      "name": "Neural models module",
+      "status": "PASS",
+      "message": "Folder: 05_neural_models"
+    },
+    {
+      "name": "05_neural_models README",
+      "status": "PASS",
+      "message": "Documentation exists"
+    },
+    {
+      "name": "Evaluation module",
+      "status": "PASS",
+      "message": "Folder: 06_evaluation"
+    },
+    {
+      "name": "06_evaluation README",
+      "status": "PASS",
+      "message": "Documentation exists"
+    },
+    {
+      "name": "Web interface module",
+      "status": "PASS",
+      "message": "Folder: 07_web_interface"
+    },
+    {
+      "name": "07_web_interface README",
+      "status": "PASS",
+      "message": "Documentation exists"
+    },
+    {
+      "name": "Data file: vnexpressT_bongda_part1.json",
+      "status": "PASS",
+      "message": "File: data/raw/vnexpressT_bongda_part1.json"
+    },
+    {
+      "name": "Valid JSON: vnexpressT_bongda_part1.json",
+      "status": "PASS",
+      "message": "Items: 473"
+    },
+    {
+      "name": "Data file: vnexpressT_bongda_part2.json",
+      "status": "PASS",
+      "message": "File: data/raw/vnexpressT_bongda_part2.json"
+    },
+    {
+      "name": "Valid JSON: vnexpressT_bongda_part2.json",
+      "status": "PASS",
+      "message": "Items: 488"
+    },
+    {
+      "name": "Data file: vnexpressT_bongda_part3.json",
+      "status": "PASS",
+      "message": "File: data/raw/vnexpressT_bongda_part3.json"
+    },
+    {
+      "name": "Valid JSON: vnexpressT_bongda_part3.json",
+      "status": "PASS",
+      "message": "Items: 487"
+    },
+    {
+      "name": "Data file: vnexpressT_bongda_part4.json",
+      "status": "PASS",
+      "message": "File: data/raw/vnexpressT_bongda_part4.json"
+    },
+    {
+      "name": "Valid JSON: vnexpressT_bongda_part4.json",
+      "status": "PASS",
+      "message": "Items: 308"
+    },
+    {
+      "name": "Vocabulary file",
+      "status": "PASS",
+      "message": "File: data/processed/vocab.txt"
+    },
+    {
+      "name": "Vocabulary size",
+      "status": "PASS",
+      "message": "Words: 174"
+    },
+    {
+      "name": "Crawling notebook",
+      "status": "PASS",
+      "message": "File: 01_crawling/crawlcode.ipynb"
+    },
+    {
+      "name": "01_crawling/crawlcode.ipynb structure",
+      "status": "PASS",
+      "message": "Cells: 1"
+    },
+    {
+      "name": "Text processing notebook",
+      "status": "PASS",
+      "message": "File: 02_preprocessing/textprocessing.ipynb"
+    },
+    {
+      "name": "02_preprocessing/textprocessing.ipynb structure",
+      "status": "PASS",
+      "message": "Cells: 41"
+    },
+    {
+      "name": "BM25 ranking notebook",
+      "status": "PASS",
+      "message": "File: 04_ranking/BM25.ipynb"
+    },
+    {
+      "name": "04_ranking/BM25.ipynb structure",
+      "status": "PASS",
+      "message": "Cells: 29"
+    },
+    {
+      "name": "DeepCT Conv-KNRM notebook",
+      "status": "PASS",
+      "message": "File: 05_neural_models/DeepCT_ConvKRM.ipynb"
+    },
+    {
+      "name": "05_neural_models/DeepCT_ConvKRM.ipynb structure",
+      "status": "PASS",
+      "message": "Cells: 34"
+    },
+    {
+      "name": "Trained model weights",
+      "status": "PASS",
+      "message": "File: 05_neural_models/deepct_convknrm_vi.pth"
+    },
+    {
+      "name": "Model size",
+      "status": "PASS",
+      "message": "6.74 MB"
+    },
+    {
+      "name": "PyTorch for neural models",
+      "status": "PASS",
+      "message": "Module: torch"
+    },
+    {
+      "name": "FastAPI for web backend",
+      "status": "PASS",
+      "message": "Module: fastapi"
+    },
+    {
+      "name": "PyVi for Vietnamese NLP",
+      "status": "PASS",
+      "message": "Module: pyvi"
+    },
+    {
+      "name": "Pandas for data processing",
+      "status": "PASS",
+      "message": "Module: pandas"
+    },
+    {
+      "name": "NumPy for numerical operations",
+      "status": "PASS",
+      "message": "Module: numpy"
+    },
+    {
+      "name": "TQDM for progress bars",
+      "status": "PASS",
+      "message": "Module: tqdm"
+    },
+    {
+      "name": "PyMongo for MongoDB",
+      "status": "PASS",
+      "message": "Module: pymongo"
+    },
+    {
+      "name": "Crawling utilities",
+      "status": "PASS",
+      "message": "Folder: src/crawling"
+    },
+    {
+      "name": "Preprocessing utilities",
+      "status": "PASS",
+      "message": "Folder: src/preprocessing"
+    },
+    {
+      "name": "Indexing utilities",
+      "status": "PASS",
+      "message": "Folder: src/indexing"
+    },
+    {
+      "name": "Ranking utilities",
+      "status": "PASS",
+      "message": "Folder: src/ranking"
+    },
+    {
+      "name": "Query utilities",
+      "status": "PASS",
+      "message": "Folder: src/query"
+    },
+    {
+      "name": "FastAPI backend",
+      "status": "PASS",
+      "message": "File: 07_web_interface/web/backend/app.py"
+    },
+    {
+      "name": "Backend requirements",
+      "status": "PASS",
+      "message": "File: 07_web_interface/web/backend/requirements.txt"
+    },
+    {
+      "name": "Frontend package.json",
+      "status": "PASS",
+      "message": "File: 07_web_interface/web/frontend/package.json"
+    },
+    {
+      "name": "Vite configuration",
+      "status": "PASS",
+      "message": "File: 07_web_interface/web/frontend/vite.config.js"
+    }
+  ]
+}
