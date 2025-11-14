@@ -35,10 +35,13 @@ function SearchResults({ results, query }) {
             </div>
           )}
 
-          {/* Content snippet */}
-          <p className="result-snippet">
-            {result.content || result.summary}
-          </p>
+          {/* Content snippet with highlighted query terms */}
+          <p 
+            className="result-snippet"
+            dangerouslySetInnerHTML={{ 
+              __html: result.snippet || result.content || result.summary || 'Không có nội dung' 
+            }}
+          />
 
           {/* Meta info */}
           <div className="result-meta">

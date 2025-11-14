@@ -66,6 +66,83 @@ class VietnameseTextProcessor:
         return filtered
 
 # ============================
+# Snippet Generator
+# ============================
+class SnippetGenerator:
+    """Generate highlighted snippets for search results"""
+    
+    def __init__(self, snippet_length=200, context_window=50):
+        self.snippet_length = snippet_length
+        self.context_window = context_window
+    
+    def generate_snippet(self, text, query_tokens, highlight=True):
+        """
+        Generate snippet from text with query terms highlighted
+        Returns: dict with 'text' and 'highlighted' versions
+        """
+        if not text or not query_tokens:
+            snippet = text[:self.snippet_length] if text else ""
+            return {
+                'text': snippet,
+                'highlighted': snippet
+            }
+        
+        text_lower = text.lower()
+        
+        # Find first occurrence of any query term
+        best_pos = -1
+        best_term = None
+        
+        for token in query_tokens:
+            pos = text_lower.find(token.lower())
+            if pos != -1 and (best_pos == -1 or pos < best_pos):
+                best_pos = pos
+                best_term = token
+        
+        # If no term found, return beginning of text
+        if best_pos == -1:
+            snippet = text[:self.snippet_length]
+            return {
+                'text': snippet,
+                'highlighted': snippet
+            }
+        
+        # Extract snippet around the found term
+        start = max(0, best_pos - self.context_window)
+        end = min(len(text), best_pos + len(best_term) + self.context_window)
+        
+        # Expand to word boundaries
+        while start > 0 and not text[start-1].isspace():
+            start -= 1
+        while end < len(text) and not text[end].isspace():
+            end += 1
+        
+        snippet = text[start:end]
+        
+        # Add ellipsis
+        prefix = '...' if start > 0 else ''
+        suffix = '...' if end < len(text) else ''
+        snippet = prefix + snippet + suffix
+        
+        # Highlight query terms if requested
+        if highlight:
+            highlighted = snippet
+            for token in query_tokens:
+                # Case-insensitive replacement with highlighting
+                pattern = re.compile(re.escape(token), re.IGNORECASE)
+                highlighted = pattern.sub(lambda m: f'<mark>{m.group()}</mark>', highlighted)
+            
+            return {
+                'text': snippet,
+                'highlighted': highlighted
+            }
+        
+        return {
+            'text': snippet,
+            'highlighted': snippet
+        }
+
+# ============================
 # BM25 Implementation
 # ============================
 class BM25:
@@ -179,6 +256,7 @@ class ImprovedDeepCT(nn.Module):
 class SearchEngine:
     def __init__(self):
         self.processor = VietnameseTextProcessor()
+        self.snippet_generator = SnippetGenerator()
         self.articles = []
         self.vocab = {}
         self.word2idx = {}
@@ -293,15 +371,26 @@ class SearchEngine:
         for idx in top_indices:
             if scores[idx] > 0:
                 article = self.articles[int(idx)]
+                
+                # Generate snippet with highlighting
+                content = article.get('content', '')
+                snippet_data = self.snippet_generator.generate_snippet(
+                    content, 
+                    query_tokens, 
+                    highlight=True
+                )
+                
                 results.append({
                     'doc_id': int(idx),
                     'score': float(scores[idx]),
                     'method': 'BM25',
                     'title': article.get('title', ''),
-                    'content': article.get('content', '')[:200] + '...',
+                    'snippet': snippet_data['highlighted'],  # Use highlighted snippet
+                    'content': snippet_data['text'],  # Plain text snippet
                     'summary': article.get('summary', ''),
                     'url': article.get('url', ''),
-                    'date': article.get('date', '')                })
+                    'date': article.get('date', '')
+                })
         
         return results
     
@@ -363,12 +452,22 @@ class SearchEngine:
         for doc_id, score in scores[:top_k * 2]:  # Get more candidates
             if score > 0.001:  # Lower threshold from 0.01 to 0.001
                 article = self.articles[int(doc_id)]
+                
+                # Generate snippet with highlighting
+                content = article.get('content', '')
+                snippet_data = self.snippet_generator.generate_snippet(
+                    content, 
+                    query_tokens, 
+                    highlight=True
+                )
+                
                 results.append({
                     'doc_id': int(doc_id),
                     'score': float(score),
                     'method': 'DeepCT+Conv-KNRM',
                     'title': article.get('title', ''),
-                    'content': article.get('content', '')[:200] + '...',
+                    'snippet': snippet_data['highlighted'],  # Use highlighted snippet
+                    'content': snippet_data['text'],  # Plain text snippet
                     'summary': article.get('summary', ''),
                     'url': article.get('url', ''),
                     'date': article.get('date', '')
