@@ -226,9 +226,8 @@ device = torch.device('cpu')
 
 ## 👥 Team
 
-**Course**: AI2021 - Information Retrieval  
 **University**: FPT University  
-**Semester**: 5 (2024)
+**Semester**: 5 (2025)
 
 ---
 
